@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .circle {
+            width: 50px;
+            height: 50px;
+            border: 2px solid black;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 49% { background-color: transparent; }
+            50%, 100% { background-color: red; }
+        }
+    </style>
+</head>
+<body>
+    <div class="circle"></div>
+    <div id="time"></div>
+
+    <script>
+        function updateTime() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+            
+            // Format the time with leading zeros
+            hours = ('0' + hours).slice(-2);
+            minutes = ('0' + minutes).slice(-2);
+            seconds = ('0' + seconds).slice(-2);
+            
+            var timeString = hours + ':' + minutes + ':' + seconds;
+            document.getElementById('time').textContent = timeString;
+        }
+        
+        // Update the time every second
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
